@@ -3,40 +3,15 @@ const { User, Post, Comment } = require("../../models");
 
 // "/api/posts"
 
-// get all posts
-router.get("/", async (req, res) => {
+// create a post
+router.post("/", async (req,res) => {
   try {
-    const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["id", "username"],
-        },
-      ],
+    const post = await Post.create({
+      ...req.body,
+      // user_id: req.session.user_id
     });
 
-    res.status(200).json(postData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// get one post
-router.get("/:id", async (req, res) => {
-  try {
-    const postData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ["id", "username"],
-        },
-        {
-          model: Comment,
-        },
-      ],
-    });
-
-    res.status(200).json(postData);
+    res.status(200).json(post);
   } catch (err) {
     res.status(500).json(err);
   }
