@@ -29,7 +29,9 @@ main {
     flex-direction: column;
 }
 
-.post-page .card {
+.post-page .card,
+.login .card,
+.signup .card {
     width: 75rem;
 }
 
@@ -38,7 +40,9 @@ main {
 }
 
 .homepage .card,
-.post .card {
+.post .card,
+.login .card,
+.signup .card {
     margin: 15px;
     background-color: var(--two);
 }

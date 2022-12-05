@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../models");
+const withAuth = require("../utils/auth");
 
 // get all posts -> for homepage
 router.get("/", async (req, res) => {
@@ -18,7 +19,9 @@ router.get("/", async (req, res) => {
 
     // Pass serialized data into template
     res.render("homepage", {
-      posts
+      posts,
+      loggedIn: req.session.loggedIn,
+      user_id: req.session.user_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -26,7 +29,7 @@ router.get("/", async (req, res) => {
 });
 
 // get one post
-router.get("/post/:id", async (req, res) => {
+router.get("/post/:id", withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -50,7 +53,8 @@ router.get("/post/:id", async (req, res) => {
 
     res.render("post", {
       post,
-      // logged_in: req.sessions.logged_in
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id
     })
   } catch (err) {
     res.status(500).json(err);
@@ -58,7 +62,7 @@ router.get("/post/:id", async (req, res) => {
 });
 
 // gets one user by id
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       attributes: ["username"],
@@ -73,6 +77,24 @@ router.get("/user/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+// sign up page
+router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/'); // Redirects to homepage if already logged in
+    return;
+  }
+  res.render('signup');
+});
+
+// log in page
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/'); // Redirects to homepage if already logged in
+    return;
+  }
+  res.render('login');
 });
 
 module.exports = router;
