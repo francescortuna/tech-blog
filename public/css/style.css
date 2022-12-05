@@ -1,0 +1,30 @@
+:root { /* https://coolors.co/palette/edede9-d6ccc2-f5ebe0-e3d5ca-d5bdaf */
+    --one: #EDEDE9;
+    --two: #D6CCC2;
+    --three: #F5EBE0;
+    --four: #E3D5CA;
+    --five: #D5BDAF;
+}
+
+body {
+    background-color: var(--one);
+}
+
+.navbar {
+    background-color: var(--two);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.homepage-card {
+    margin: 15px;
+    background-color: var(--two);
+}
+
+.homepage-card-author {
+    color: var(--three);
+}
