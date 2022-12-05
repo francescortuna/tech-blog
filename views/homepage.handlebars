@@ -5,10 +5,13 @@
       <h5 class="card-title">{{post.title}}</h5>
       <h6 class="card-subtitle mb-2 homepage-card-author">by
         {{user.username}}</h6>
-      <p class="card-text">{{post.content}}.</p>
+      <p class="card-text">{{post.content}}</p>
     </div>
     <div class="card-footer">
       Posted on {{ format_date post.createdAt}}
+      {{#if post.edited}}
+      Edited on {{ format_date post.updatedAt }}
+      {{/if}}
     </div>
   </div>
 {{/each}}

@@ -24,6 +24,7 @@ router.put("/:id", async (req, res) => {
       {
         title: req.body.title,
         content: req.body.content,
+        edited: true
       },
       {
         where: {

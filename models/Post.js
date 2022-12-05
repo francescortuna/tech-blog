@@ -19,6 +19,11 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    edited: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
