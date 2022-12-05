@@ -29,11 +29,6 @@
         <div class="card-footer">
           Commented on
           {{format_date comment.createdAt}}
-          {{#if comment.edited}}
-            <br />
-            Edited on
-            {{format_date comment.updatedAt}}
-          {{/if}}
         </div>
       </div>
     {{/each}}
