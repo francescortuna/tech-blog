@@ -18,8 +18,7 @@ router.get("/", async (req, res) => {
 
     // Pass serialized data into template
     res.render("homepage", {
-      posts,
-      // logged_in: req.sessions.logged_in
+      posts
     });
   } catch (err) {
     res.status(500).json(err);
@@ -37,11 +36,22 @@ router.get("/post/:id", async (req, res) => {
         },
         {
           model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ["id", "username"]
+            }
+          ]
         },
       ],
     });
 
-    res.status(200).json(postData);
+    const post = postData.get({ plain: true });
+
+    res.render("post", {
+      post,
+      // logged_in: req.sessions.logged_in
+    })
   } catch (err) {
     res.status(500).json(err);
   }

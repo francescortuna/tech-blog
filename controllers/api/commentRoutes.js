@@ -23,10 +23,11 @@ router.put("/:id", async (req, res) => {
     const commentData = await Comment.update(
       {
         content: req.body.content,
+        edited: true
       },
       {
         where: {
-          id: req.params.id,
+          id: req.params.id
           // user_id: req.session.user_id
         },
       }

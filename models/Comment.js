@@ -22,6 +22,11 @@ Comment.init(
         key: "id",
       },
     },
+    edited: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     post_id: {
       type: DataTypes.INTEGER,
       references: {

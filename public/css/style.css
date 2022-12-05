@@ -20,11 +20,41 @@ main {
     padding: 50px;
 }
 
-.homepage-card {
+.homepage {
+    display: flex;
+}
+
+.post-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-page .card {
+    width: 75rem;
+}
+
+.homepage .card {
+    width: 30rem;
+}
+
+.homepage .card,
+.post .card {
     margin: 15px;
     background-color: var(--two);
 }
 
-.homepage-card-author {
+.homepage .card-author,
+.post .card-author {
     color: var(--three);
+}
+
+a,
+a:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.comments .card {
+    margin: 15px;
+    background-color: var(--three);
 }
