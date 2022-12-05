@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
   try {
     const comment = await Comment.create({
       ...req.body,
-      // user_id: req.session.user_id
+      user_id: req.session.user_id
     });
 
     res.status(200).json(comment);
@@ -27,8 +27,8 @@ router.put("/:id", async (req, res) => {
       },
       {
         where: {
-          id: req.params.id
-          // user_id: req.session.user_id
+          id: req.params.id,
+          user_id: req.session.user_id
         },
       }
     );
@@ -45,7 +45,7 @@ router.delete("/:id", async (req, res) => {
     const commentData = await Comment.destroy({
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id
+        user_id: req.session.user_id
       },
     });
 

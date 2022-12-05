@@ -11,7 +11,8 @@
         Posted on
         {{format_date post.createdAt}}
         {{#if post.edited}}
-          <br> Edited on
+          <br />
+          Edited on
           {{format_date post.updatedAt}}
         {{/if}}
       </div>
@@ -29,11 +30,32 @@
           Commented on
           {{format_date comment.createdAt}}
           {{#if comment.edited}}
-            <br> Edited on
+            <br />
+            Edited on
             {{format_date comment.updatedAt}}
           {{/if}}
         </div>
       </div>
     {{/each}}
+
+    <div class="add-comment-card">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <label for="new-comment-content">Post a new comment</label>
+            <br />
+            <textarea
+              class="form-control"
+              id="new-comment-content"
+              rows="3"
+            ></textarea>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<script src="/js/comment.js"></script>
