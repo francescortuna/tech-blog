@@ -20,11 +20,15 @@ main {
     padding: 50px;
 }
 
-.homepage {
+.homepage,
+.profile .posts {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.post-page {
+.post-page,
+.profile {
     display: flex;
     flex-direction: column;
 }
@@ -35,14 +39,21 @@ main {
     width: 75rem;
 }
 
-.homepage .card {
+.homepage .card,
+.profile .card {
     width: 30rem;
+}
+
+.homepage .card-body,
+.profile .card-body {
+    height: 25rem;
 }
 
 .homepage .card,
 .post .card,
 .login .card,
-.signup .card {
+.signup .card,
+.profile .card {
     margin: 15px;
     background-color: var(--two);
 }
@@ -68,7 +79,11 @@ a:hover {
 .signup button,
 .signup button:hover,
 .login button,
-.login button:hover {
+.login button:hover,
+.profile button,
+.profile button:hover,
+.modal-footer button,
+.modal-footer button:hover {
     background-color: var(--five);
     border-color: var(--five);
 }

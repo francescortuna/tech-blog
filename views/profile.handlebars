@@ -1,0 +1,66 @@
+<div class="profile">
+  <h1 style="text-align: center;">My Home Page</h1>
+  <div class="posts">
+    {{#each user.posts as |post|}}
+      <div class="card">
+        <a href="/post/{{post.id}}">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <p class="card-text" style="white-space: pre-line">{{format_content post.content}}</p>
+          </div>
+          <div class="card-footer">
+            Posted on
+            {{format_date post.createdAt}}
+            {{#if post.edited}}
+              <br />Edited on
+              {{format_date post.updatedAt}}
+            {{/if}}
+          </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
+
+  <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#add-post-modal">Create a new post</button>
+
+  <div class="modal fade" id="add-post-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create a New Post</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="newPostTitle" class="form-label">Post Title</label>
+              <input
+                type="email"
+                class="form-control"
+                id="newPostTitle"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="newPostContent" class="form-label">Post Content</label>
+              <textarea
+                class="form-control"
+                id="newPostContent"
+                rows="3"
+              ></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary new-post-btn">Create Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/profile.js"></script>
