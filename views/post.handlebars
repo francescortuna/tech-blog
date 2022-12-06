@@ -2,10 +2,14 @@
   <div class="post">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{post.title}}</h5>
+        <h5 class="card-title currentPostTitle">{{post.title}}</h5>
         <h6 class="card-subtitle mb-2 card-author">by
           {{post.user.username}}</h6>
         <p class="card-text" style="white-space: pre-line">{{post.content}}</p>
+        {{#ifCond post.user.id "==" user_id}}
+          <button type="button" class="btn btn-primary"><a href="/editpost/{{post.id}}">Edit Post</a></button>
+          <button type="button" class="btn btn-primary">Delete Post</button>
+        {{/ifCond}}
       </div>
       <div class="card-footer">
         Posted on
@@ -53,4 +57,5 @@
   </div>
 </div>
 
+<script src="/js/post.js"></script>
 <script src="/js/comment.js"></script>

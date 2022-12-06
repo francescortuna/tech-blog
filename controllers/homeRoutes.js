@@ -85,6 +85,29 @@ router.get("/user/:id", withAuth, async (req, res) => {
   }
 });
 
+router.get("/editpost/:id", withAuth, async (req,res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["id", "username"],
+        }
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+
+    res.render("editPost", {
+      post,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 // sign up page
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {

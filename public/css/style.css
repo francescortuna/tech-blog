@@ -83,7 +83,9 @@ a:hover {
 .profile button,
 .profile button:hover,
 .modal-footer button,
-.modal-footer button:hover {
+.modal-footer button:hover,
+.post-page button,
+.post-page button:hover {
     background-color: var(--five);
     border-color: var(--five);
 }
