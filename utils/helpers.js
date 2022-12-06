@@ -7,7 +7,7 @@ module.exports = {
 
   format_content: (content) => {
     if (content.length > 39) {
-      const newContent = content.split("").slice(0, 39);
+      const newContent = content.split("").slice(0, 680);
       newContent.push("...");
 
       return newContent.join("");
